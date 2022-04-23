@@ -197,6 +197,7 @@ const CartStyle = styled.div`
     background: #F9F9FB;
     border: 1px solid #DDDDDD;
     box-sizing: border-box;
+    cursor: pointer;
   }
   .modal-container__box__content__bottom{
     margin-top: 49px;

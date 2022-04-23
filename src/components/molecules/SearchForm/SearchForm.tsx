@@ -13,7 +13,6 @@ const SearchForm = () => {
   const inputEl:any = useRef(null);
   const dispatch: TypedDispatch = useDispatch();
   const booksState = useSelector( (state:RootStore) => state.booksReducer);
-  const searchState = useSelector( (state:RootStore) => state.searchReducer);
 
   const clearInput = () => {
     setValue("");

@@ -65,9 +65,9 @@ const Cart = ({handleClose}: CartProps) => {
      <div className={`container-full modal-container`}>
       <div className={`modal-container__box`}>
         <div className={`container-full center modal-container__box__header`}>
-           <div className={`modal-container__box__header__left`}>
+           <div className={`modal-container__box__header__left`} onClick={() => handleClose()}>
              <Image image={arrow} alt="arrow" />
-             <Text value="Back" onClick={() => handleClose()} />
+             <Text value="Back" />
            </div>
            <div className={`modal-container__box__header__right`}>
              <Text value="Your Cart" />

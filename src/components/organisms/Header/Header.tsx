@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import HeaderStyle from './HeaderStyle';
 import Text from '../../atoms/Text/Text';
 import Image from '../../atoms/Image/Img';
@@ -15,11 +15,18 @@ import MobileHeader from '../MobileHeader/MobileHeader';
 import { useDispatch, useSelector} from 'react-redux';
 import { TypedDispatch, RootStore } from '../../../config/ConfigStore';
 
-const Header = () => {
+type HeaderProps = {
+  showCartProp: boolean
+}
+const Header = ({showCartProp}: HeaderProps) => {
   const [toggleCart, setToggleState] = useState(false);
   const [toggleMobileHeader, setToggleMobileHeader] = useState(false);
   const cartState = useSelector( (state:RootStore) => state.cartReducer);
   const dispatch: TypedDispatch = useDispatch();
+  
+  useEffect(() => {
+    setToggleState(true)
+  }, [showCartProp]);
   
   const showCart = () => {
     setToggleState(true)

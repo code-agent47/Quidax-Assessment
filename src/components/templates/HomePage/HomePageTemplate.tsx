@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import Header from '../../organisms/Header/Header';
 import Hero from '../../organisms/Hero/Hero';
 import HeaderText from '../../atoms/HeaderText/Text';
@@ -12,17 +12,25 @@ const HomePageTemplate = () => {
   const dispatch: TypedDispatch = useDispatch();
   const booksState = useSelector( (state:RootStore) => state.booksReducer);
   const searchState = useSelector( (state:RootStore) => state.searchReducer);
+  const [toggleCart, setToggleCart] = useState(false)
   
   useEffect(() => {
     if(booksState.results === null){
       dispatch(BooksAction())
     }
   });
+
+  const showCart = () => {
+    if(toggleCart){
+      return setToggleCart(false)
+    }
+    setToggleCart(true)
+  }
   
   return (
     <>
       <HomePageTemplateStyle>
-       <Header />
+       <Header showCartProp={toggleCart}/>
        {
          (searchState.results === null) ? 
           <>
@@ -38,7 +46,7 @@ const HomePageTemplate = () => {
                   booksState.results?.data.map( (data: Record<any, any>, i: number) => {
                     return(
                       <div className={`div-xl-4 div-md-6 books__content__item`} key={i}>
-                        <BookCard bookData={data}/>
+                        <BookCard bookData={data} showCart={showCart}/>
                       </div>
                     )
                   })
@@ -56,7 +64,7 @@ const HomePageTemplate = () => {
                   searchState.results?.data.map( (data: Record<any, any>, i: number) => {
                     return(
                       <div className={`div-xl-4 div-md-6 books__content__item`} key={i}>
-                        <BookCard bookData={data} />
+                        <BookCard bookData={data} showCart={showCart}/>
                       </div>
                     )
                   })

@@ -14,9 +14,10 @@ import { TypedDispatch, RootStore } from '../../../config/ConfigStore';
 
 type BookCardProps = {
   bookData: any
+  showCart: Function
 }
 
-const BookCard = ({bookData}: BookCardProps) => {
+const BookCard = ({bookData, showCart}: BookCardProps) => {
   const dispatch: TypedDispatch = useDispatch();
   const cartState = useSelector( (state:RootStore) => state.cartReducer);
 
@@ -29,6 +30,7 @@ const BookCard = ({bookData}: BookCardProps) => {
         maxQuantity: productDetails.available_copies
       }
       dispatch(saveProduct(data));
+      showCart()
     }
     else{
       dispatch(increaseQuantity(productDetails.id))

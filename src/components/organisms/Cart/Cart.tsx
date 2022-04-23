@@ -30,7 +30,6 @@ const Cart = ({handleClose}: CartProps) => {
       dispatch(decreaseAvailableQuantity(productDetails.id))
       dispatch(increaseQuantity(productDetails.id))
     }
-    console.log(cartState);
   }
 
   const decreaseCartQuantity = (productDetails: any) => {
@@ -42,13 +41,11 @@ const Cart = ({handleClose}: CartProps) => {
       dispatch(increaseAvailableQuantity(productDetails.id));
       dispatch(deleteProduct(productDetails.id))
     }
-    console.log(cartState);
   }
 
   const removeItem = (productDetails: any) => {
     dispatch(restoreAvailableQuantity(productDetails.id, productDetails.quantity))
     dispatch(deleteProduct(productDetails.id))
-    console.log(cartState);
   }
 
   const subTotal = () => {

@@ -69,13 +69,11 @@ const SearchForm = () => {
       let filteredResults = searchResults.filter((c: Record<any, any>, index: number) => {
         return searchResults.indexOf(c) === index;
       });
-      console.log(filteredResults)
       let data = {
         searchText: inputValue,
         data: filteredResults
       }
       await dispatch(SearchAction(data));
-      console.log(searchState);
     }
     
   }

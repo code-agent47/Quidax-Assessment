@@ -34,7 +34,6 @@ const BookCard = ({bookData}: BookCardProps) => {
       dispatch(increaseQuantity(productDetails.id))
     }
     dispatch(decreaseAvailableQuantity(productDetails.id))
-    console.log(cartState);
   }
 
   return (

@@ -80,7 +80,7 @@ const BookCard = ({bookData, showCart}: BookCardProps) => {
             </div>
           </div>
           <div className={`container-full card__info__price`}>
-            <Text value={`$${bookData.price}`} />
+            <Text value={`₦${bookData.price}`} />
             {
               (bookData.available_copies > 0) ?
               <Text value={`${bookData.available_copies} Copies Available`} className={`--available`} /> : 
